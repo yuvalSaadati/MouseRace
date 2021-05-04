@@ -86,6 +86,7 @@ public class Ball implements Sprite {
         moveOneStep();
     }
 
+
     /**
      *
      * Object hit his own target

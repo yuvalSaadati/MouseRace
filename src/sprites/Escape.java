@@ -28,6 +28,7 @@ public class Escape implements Sprite {
         this.score = score;
     }
 
+
     /**
      * Draw chase object on the screen
      *
@@ -38,6 +39,8 @@ public class Escape implements Sprite {
         surface.setColor(Color.YELLOW);
         surface.fillRectangle(x, y, width, height);
     }
+
+
     /**
      * The chase object is chasing the mouse.
      */

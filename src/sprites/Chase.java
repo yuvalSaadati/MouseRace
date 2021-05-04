@@ -82,7 +82,6 @@ public class Chase implements Sprite {
     }
 
 
-
     /**
      * Calling the next step.
      */

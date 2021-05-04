@@ -27,6 +27,7 @@ public class Game {
     // timer for increasing the score by 1 every second
     Timer timer = new Timer();
 
+
     /**
      *  Constructor
      */

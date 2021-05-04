@@ -8,12 +8,14 @@ class DrawText implements Command {
     int fontSize;
     String text;
 
+
     public DrawText(int x, int y, String text, int fontSize) {
         this.x = x;
         this.y = y;
         this.text = text;
         this.fontSize = fontSize;
     }
+
 
     public void draw(Graphics g) {
         Font currentFont = g.getFont();

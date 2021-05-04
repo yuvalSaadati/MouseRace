@@ -11,6 +11,7 @@ import GraphicsCommands.DrawSurface;
 public class SpriteCollection {
     private List<Sprite> sprites;
 
+
     /**
      * Constructor.
      */

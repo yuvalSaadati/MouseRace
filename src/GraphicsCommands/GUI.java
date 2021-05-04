@@ -19,6 +19,7 @@ public class GUI implements ActionListener {
     private int height;
     private Game game;
 
+
     public GUI (String title, int width, int height, Game game) {
         this.game = game;
         this.width = width;
@@ -43,10 +44,12 @@ public class GUI implements ActionListener {
         this.surface = new DrawSurface();
     }
 
+
     public DrawSurface getDrawSurface() {
 
         return new DrawSurface();
     }
+
 
     public void show(DrawSurface surface) {
         GUI.this.frame.createBufferStrategy(2);
@@ -57,15 +60,18 @@ public class GUI implements ActionListener {
         bf.show();
     }
 
+
     public void close() {
         this.frame.dispatchEvent(new WindowEvent(this.frame, 201));
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         this.mainPanel.remove(this.startButton);
         this.game.run();
     }
+
 
     private class GUIPanel extends JPanel {
         private GUIPanel() {

@@ -45,6 +45,7 @@ public class Score extends TimerTask implements Sprite   {
      */
     public void timePassed() {}
 
+
     /**
      * Do nothing.
      */

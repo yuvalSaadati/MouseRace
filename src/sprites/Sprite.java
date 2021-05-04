@@ -14,11 +14,13 @@ public interface Sprite {
      */
     void drawOn(DrawSurface d);
 
+
     /**
      * notify the sprite that time has passed.
      *
      */
     void timePassed();
+
 
     /**
      * when object hit his own target.
