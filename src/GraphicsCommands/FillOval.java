@@ -1,14 +1,15 @@
-package GUICommands;
+package GraphicsCommands;
+
 
 import java.awt.Graphics;
 
-class FillRectangle implements Command {
+class FillOval implements Command {
     int x;
     int y;
     int w;
     int h;
 
-    public FillRectangle(int x, int y, int w, int h) {
+    public FillOval(int x, int y, int w, int h) {
         this.x = x;
         this.y = y;
         this.w = w;
@@ -16,6 +17,6 @@ class FillRectangle implements Command {
     }
 
     public void draw(Graphics g) {
-        g.fillRect(this.x, this.y, this.w, this.h);
+        g.fillOval(this.x, this.y, this.w, this.h);
     }
 }

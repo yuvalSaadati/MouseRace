@@ -34,7 +34,7 @@ public class Escape implements Sprite {
      * @param surface of the game.
      */
     @Override
-    public void drawOn(GUICommands.DrawSurface surface) {
+    public void drawOn(GraphicsCommands.DrawSurface surface) {
         surface.setColor(Color.YELLOW);
         surface.fillRectangle(x, y, width, height);
     }
@@ -51,15 +51,16 @@ public class Escape implements Sprite {
         int mouseY = (int) a.getLocation().getY();
         int newX = x;
         int newY = y;
+        int changeVal = 7;
         if (this.x < mouseX) {
-            newX -= 5;
+            newX -= changeVal;
         } else {
-            newX += 5;
+            newX += changeVal;
         }
         if (this.y < mouseY) {
-            newY -= 5;
+            newY -= changeVal;
         } else {
-            newY += 5;
+            newY += changeVal;
         }
         // checking if the mouse is hitting the object
         if (mouseX <= this.width + newX && mouseX >= newX

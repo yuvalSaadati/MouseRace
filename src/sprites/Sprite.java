@@ -1,5 +1,5 @@
 package sprites;
-import GUICommands.DrawSurface;
+import GraphicsCommands.DrawSurface;
 
 /**
  * Sprite interface will be implemented by the objects.

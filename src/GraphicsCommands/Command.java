@@ -1,4 +1,4 @@
-package GUICommands;
+package GraphicsCommands;
 
 import java.awt.*;
 

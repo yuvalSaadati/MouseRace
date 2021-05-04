@@ -1,4 +1,4 @@
-package GUICommands;
+package GraphicsCommands;
 import game.Game;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -26,7 +26,7 @@ public class GUI implements ActionListener {
         this.frame = new JFrame(title);
         this.mainPanel = new JPanel();
         this.startButton = new JButton("start");
-        //this.startButton.setPreferredSize(new Dimension(200, 40));
+        this.startButton.setPreferredSize(new Dimension(200, 40));
         this.mainPanel.add(this.startButton, "Center");
         this.startButton.addActionListener(this);
         this.drawingPanel = new GUI.GUIPanel();
@@ -63,7 +63,6 @@ public class GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //this.startButton.remove(0);
         this.mainPanel.remove(this.startButton);
         this.game.run();
     }

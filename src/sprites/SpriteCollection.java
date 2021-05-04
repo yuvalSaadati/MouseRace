@@ -1,7 +1,7 @@
 package sprites;
 import java.util.ArrayList;
 import java.util.List;
-import GUICommands.DrawSurface;
+import GraphicsCommands.DrawSurface;
 
 /**
  * SpriteCollection hold a collection of sprites.

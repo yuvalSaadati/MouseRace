@@ -1,6 +1,6 @@
 package sprites;
-import GUICommands.DrawSurface;
-import GUICommands.GUI;
+import GraphicsCommands.DrawSurface;
+import GraphicsCommands.GUI;
 import java.awt.*;
 import java.util.Random;
 

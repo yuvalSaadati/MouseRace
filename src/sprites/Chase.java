@@ -1,5 +1,5 @@
 package sprites;
-import GUICommands.GUI;
+import GraphicsCommands.GUI;
 import java.awt.*;
 
 /**
@@ -32,7 +32,7 @@ public class Chase implements Sprite {
      */
 
     @Override
-    public void drawOn(GUICommands.DrawSurface surface) {
+    public void drawOn(GraphicsCommands.DrawSurface surface) {
         surface.setColor(Color.BLUE);
         surface.fillRectangle(x, y, width, height);
     }

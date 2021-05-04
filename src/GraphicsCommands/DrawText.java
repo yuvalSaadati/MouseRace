@@ -1,4 +1,4 @@
-package GUICommands;
+package GraphicsCommands;
 import java.awt.Font;
 import java.awt.Graphics;
 

@@ -1,5 +1,5 @@
 package game;
-import GUICommands.GUI;
+import GraphicsCommands.GUI;
 import sprites.Ball;
 import sprites.*;
 import java.awt.*;
@@ -23,7 +23,7 @@ public class Game {
     int screenWidth = (int)screenSize.getWidth();
     int screenHeight = (int)screenSize.getHeight();
     private GUI gui = new GUI("Mouse race", screenWidth, screenHeight, this);
-    private GUICommands.DrawSurface drawSurface = this.gui.getDrawSurface();
+    private GraphicsCommands.DrawSurface drawSurface = this.gui.getDrawSurface();
     private Score score;
     // timer for increasing the score by 1 every second
     Timer timer = new Timer();
@@ -36,11 +36,10 @@ public class Game {
         this.score = new Score(0);
         this.timer.schedule(this.score, 0, 1000);
         this.squareChase = new Chase(400, 250, 25, 25,  this.gui);
-        this.rectangleEscape1 = new Escape(200, 100, 75, 25, this.score);
-        this.rectangleEscape2 = new Escape(400, 400, 75, 25, this.score);
+        this.rectangleEscape1 = new Escape(200, 100, 100, 50, this.score);
+        this.rectangleEscape2 = new Escape(800, 400, 100, 50, this.score);
         this.ball1 = new Ball(500, 300, 20, this.gui);
         this.ball2 = new Ball(400, 300, 20, this.gui);
-
     }
 
 

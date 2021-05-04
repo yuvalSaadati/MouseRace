@@ -1,7 +1,7 @@
 package sprites;
 import java.awt.*;
 import java.util.TimerTask;
-import GUICommands.DrawSurface;
+import GraphicsCommands.DrawSurface;
 
 /**
  * Indicate the score of the player
