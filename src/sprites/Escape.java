@@ -1,5 +1,4 @@
 package sprites;
-import geometric.Rectangle;
 import java.awt.*;
 import java.util.Random;
 
@@ -10,25 +9,22 @@ import java.util.Random;
  * @author YuvalSaadati
  */
 public class Escape implements Sprite {
-    private Rectangle rectangle;
-    private double rectangleX;
-    private double rectangleY;
-    private double rectangleWidth;
-    private double rectangleHeight;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
     private Score score;
 
 
     /**
      * constructor .
      *
-     * @param rectangle is the the shape of that object
      */
-    public Escape(Rectangle rectangle, Score score) {
-        this.rectangle = rectangle;
-        this.rectangleX = rectangle.getUpperLeft().getX();
-        this.rectangleY = rectangle.getUpperLeft().getY();
-        this.rectangleWidth = rectangle.getWidth();
-        this.rectangleHeight = rectangle.getHeight();
+    public Escape(int x, int y, int width, int height, Score score) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
         this.score = score;
     }
 
@@ -39,10 +35,6 @@ public class Escape implements Sprite {
      */
     @Override
     public void drawOn(GUICommands.DrawSurface surface) {
-        int x = (int) this.rectangle.getUpperLeft().getX();
-        int y = (int) this.rectangle.getUpperLeft().getY();
-        int width = (int) this.rectangle.getWidth();
-        int height = (int) this.rectangle.getHeight();
         surface.setColor(Color.YELLOW);
         surface.fillRectangle(x, y, width, height);
     }
@@ -57,39 +49,37 @@ public class Escape implements Sprite {
         PointerInfo a = MouseInfo.getPointerInfo();
         int mouseX = (int) a.getLocation().getX();
         int mouseY = (int) a.getLocation().getY();
-        double newX = this.rectangleX;
-        double newY = this.rectangleY;
-        if (this.rectangleX < mouseX) {
+        int newX = x;
+        int newY = y;
+        if (this.x < mouseX) {
             newX -= 5;
         } else {
             newX += 5;
         }
-        if (this.rectangleY < mouseY) {
+        if (this.y < mouseY) {
             newY -= 5;
         } else {
             newY += 5;
         }
         // checking if the mouse is hitting the object
-        if (mouseX <= this.rectangleWidth + newX && mouseX >= newX
-                && mouseY <= newY + this.rectangleHeight && mouseY >= newY) {
+        if (mouseX <= this.width + newX && mouseX >= newX
+                && mouseY <= newY + this.height && mouseY >= newY) {
 
             this.hitTarget();
         }
         // check object colliding in the game framework
         if (newX <= 1) {
             newX = 1;
-        } else if (newX + this.rectangleWidth > widthScreen) {
-            newX = widthScreen - (this.rectangleWidth + 7);
+        } else if (newX + this.width > widthScreen) {
+            newX = widthScreen - (this.width + 7);
         }
         if (newY <= 20) {
             newY = 20;
-        } else if (newY + this.rectangleHeight > heightScreen ) {
-            newY = heightScreen - (this.rectangleHeight + 30);
+        } else if (newY + this.height > heightScreen ) {
+            newY = heightScreen - (this.height + 30);
         }
-
-        this.rectangleY = newY;
-        this.rectangleX = newX;
-        this.rectangle.setRectangle(this.rectangleX, this.rectangleY, rectangleWidth, rectangleHeight);
+        this.y = newY;
+        this.x = newX;
     }
 
 
@@ -114,10 +104,10 @@ public class Escape implements Sprite {
         int heightScreen = (int) size.getHeight();
         // create random point for the new position of that rectangle
         Random rand = new Random();
-        int upperboundX = widthScreen - (int) this.rectangleWidth;
-        int upperboundY = heightScreen - (int) this.rectangleHeight;
-        this.rectangleX = rand.nextInt(upperboundX);
-        this.rectangleY = rand.nextInt(upperboundY);
+        int upperboundX = widthScreen - (int) this.width;
+        int upperboundY = heightScreen - (int) this.height;
+        this.x = rand.nextInt(upperboundX);
+        this.y = rand.nextInt(upperboundY);
         this.score.increaseCounter(5);
     }
 }

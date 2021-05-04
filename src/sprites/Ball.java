@@ -1,7 +1,6 @@
 package sprites;
 import GUICommands.DrawSurface;
 import GUICommands.GUI;
-import geometric.Point;
 import java.awt.*;
 import java.util.Random;
 
@@ -11,8 +10,9 @@ import java.util.Random;
  * @author YuvalSaadati
  */
 public class Ball implements Sprite {
-    private Point center;
     private int r;
+    private int x;
+    private int y;
     private java.awt.Color color;
     private GUI gui;
     /**
@@ -24,7 +24,8 @@ public class Ball implements Sprite {
      */
     public Ball(int x, int y, int r, GUI gui) {
         this.r = r;
-        this.center = new Point(x, y);
+        this.x = x;
+        this.y = y;
         this.gui = gui;
     }
 
@@ -37,7 +38,7 @@ public class Ball implements Sprite {
     @Override
     public void drawOn(DrawSurface surface) {
         surface.setColor(Color.RED);
-        surface.fillCircle((int) center.getX(), (int) center.getY(), r);
+        surface.fillCircle(this.x, this.y, this.r);
     }
 
 
@@ -52,8 +53,8 @@ public class Ball implements Sprite {
                 = Toolkit.getDefaultToolkit().getScreenSize();
         int widthScreen = (int) size.getWidth();
         int heightScreen = (int) size.getHeight();
-        double newX = this.center.getX();
-        double newY = this.center.getY();
+        int newX = this.x;
+        int newY = this.y;
         if (newX - this.r <= 1 || newX +this.r >= widthScreen
         || newY - this.r <=1 || newY + this.r >= heightScreen) {
             // the ball has collided the game framework
@@ -62,14 +63,16 @@ public class Ball implements Sprite {
             int upperboundY = heightScreen - this.r;
             newX = rand.nextInt(upperboundX);
             newY = rand.nextInt(upperboundY);
-            this.center.setPoint(newX, newY);
+            this.x = newX;
+            this.y = newY;
         } else if (mouseX <= this.r + newX && mouseX >= newX
                     && mouseY <= newY + this.r && mouseY >= newY) {
                 // checking if the mouse is hitting the object
                 this.hitTarget();
             }
         else {
-            this.center.setPoint(newX+5, newY+5);
+            this.x = newX + 5;
+            this.y = newY + 5;
         }
     }
 

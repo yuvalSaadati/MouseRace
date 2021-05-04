@@ -2,7 +2,6 @@ package game;
 import GUICommands.GUI;
 import sprites.Ball;
 import sprites.*;
-import geometric.Rectangle;
 import java.awt.*;
 import java.util.Timer;
 
@@ -13,10 +12,8 @@ import java.util.Timer;
  * @author YuvalSaadati
  */
 public class Game {
-    Rectangle Square;
     Chase squareChase ;
     Rectangle rectangle1;
-    Rectangle rectangle2;
     Escape rectangleEscape1 ;
     Escape rectangleEscape2 ;
     Ball ball1;
@@ -38,12 +35,9 @@ public class Game {
         this.sprites = new SpriteCollection();
         this.score = new Score(0);
         this.timer.schedule(this.score, 0, 1000);
-        this.Square = new Rectangle(400, 250, 25, 25);
-        this.squareChase = new Chase(Square,  this.gui);
-        this.rectangle1 = new Rectangle(200, 100, 75, 25);
-        this.rectangleEscape1 = new Escape(rectangle1, this.score);
-        this.rectangle2 = new Rectangle(400, 400, 75, 25);
-        this.rectangleEscape2 = new Escape(rectangle2, this.score);
+        this.squareChase = new Chase(400, 250, 25, 25,  this.gui);
+        this.rectangleEscape1 = new Escape(200, 100, 75, 25, this.score);
+        this.rectangleEscape2 = new Escape(400, 400, 75, 25, this.score);
         this.ball1 = new Ball(500, 300, 20, this.gui);
         this.ball2 = new Ball(400, 300, 20, this.gui);
 
@@ -62,13 +56,12 @@ public class Game {
      * Initialize a new game: create all the objects that will be show on the screen
      */
     public void initialize() {
-        this.addSprite(this.squareChase);
-        this.addSprite(this.rectangleEscape1);
-        this.addSprite(this.rectangleEscape2);
-        this.addSprite(this.score);
-        this.addSprite(this.ball1);
-        this.addSprite(this.ball2);
-
+        this.sprites.addSprite(this.squareChase);
+        this.sprites.addSprite(this.rectangleEscape1);
+        this.sprites.addSprite(this.rectangleEscape2);
+        this.sprites.addSprite(this.score);
+        this.sprites.addSprite(this.ball1);
+        this.sprites.addSprite(this.ball2);
         this.sprites.drawAllOn(drawSurface);
         this.gui.show(drawSurface);
     }
@@ -83,6 +76,7 @@ public class Game {
         while (true) {
             drawSurface = this.gui.getDrawSurface();
             long startTime = System.currentTimeMillis(); // timing
+            // drawing all the objects
             this.sprites.drawAllOn(drawSurface);
             // showing all the objects on the screen
             this.gui.show(drawSurface);
