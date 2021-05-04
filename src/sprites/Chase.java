@@ -79,7 +79,6 @@ public class Chase implements Sprite {
         }
         this.y = newY;
         this.x = newX;
-        //this.square.setRectangle(newX, newY, rectangleWidth, rectangleHeight);
     }
 
 

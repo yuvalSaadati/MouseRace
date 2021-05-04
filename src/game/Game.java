@@ -13,9 +13,8 @@ import java.util.Timer;
  */
 public class Game {
     Chase squareChase ;
-    Rectangle rectangle1;
-    Escape rectangleEscape1 ;
-    Escape rectangleEscape2 ;
+    Escape escape1 ;
+    Escape escape2 ;
     Ball ball1;
     Ball ball2;
     private SpriteCollection sprites;
@@ -36,8 +35,8 @@ public class Game {
         this.score = new Score(0);
         this.timer.schedule(this.score, 0, 1000);
         this.squareChase = new Chase(400, 250, 25, 25,  this.gui);
-        this.rectangleEscape1 = new Escape(200, 100, 100, 50, this.score);
-        this.rectangleEscape2 = new Escape(800, 400, 100, 50, this.score);
+        this.escape1 = new Escape(200, 100, 100, 50, this.score);
+        this.escape2 = new Escape(800, 400, 100, 50, this.score);
         this.ball1 = new Ball(500, 300, 20, this.gui);
         this.ball2 = new Ball(400, 300, 20, this.gui);
     }
@@ -56,8 +55,8 @@ public class Game {
      */
     public void initialize() {
         this.sprites.addSprite(this.squareChase);
-        this.sprites.addSprite(this.rectangleEscape1);
-        this.sprites.addSprite(this.rectangleEscape2);
+        this.sprites.addSprite(this.escape1);
+        this.sprites.addSprite(this.escape2);
         this.sprites.addSprite(this.score);
         this.sprites.addSprite(this.ball1);
         this.sprites.addSprite(this.ball2);

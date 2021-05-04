@@ -34,9 +34,6 @@ public class Score extends TimerTask implements Sprite   {
      */
     public void drawOn(DrawSurface d) {
         d.setColor(Color.WHITE.darker());
-        Dimension size
-                = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int)size.getWidth();
         d.fillRectangle(0, 0, 100, 20);
         d.setColor(Color.BLACK);
         d.drawText(20, 13, "Score: " + this.score, 12);
