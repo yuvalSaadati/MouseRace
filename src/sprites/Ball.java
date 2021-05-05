@@ -15,6 +15,8 @@ public class Ball implements Sprite {
     private int y;
     private java.awt.Color color;
     private GUI gui;
+    private int velocity;
+
     /**
      * Constructor
      *
@@ -22,11 +24,13 @@ public class Ball implements Sprite {
      * @param y     value of the center of the ball by the 'y' axes.
      * @param r     is the size (radius) of the ball
      */
-    public Ball(int x, int y, int r, GUI gui) {
+    public Ball(int velocity, int x, int y, int r, GUI gui) {
         this.r = r;
         this.x = x;
         this.y = y;
         this.gui = gui;
+        this.velocity = velocity;
+
     }
 
 
@@ -55,9 +59,9 @@ public class Ball implements Sprite {
         int heightScreen = (int) size.getHeight();
         int newX = this.x;
         int newY = this.y;
+        // checking if the object is out
         if (newX - this.r <= 1 || newX +this.r >= widthScreen
         || newY - this.r <=1 || newY + this.r >= heightScreen) {
-            // the ball has collided the game framework
             Random rand = new Random();
             int upperboundX = widthScreen -  this.r;
             int upperboundY = heightScreen - this.r;
@@ -71,8 +75,9 @@ public class Ball implements Sprite {
                 this.hitTarget();
             }
         else {
-            this.x = newX + 5;
-            this.y = newY + 5;
+            // moving the object to the next point
+            this.x = newX + this.velocity;
+            this.y = newY + this.velocity;
         }
     }
 

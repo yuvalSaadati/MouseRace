@@ -29,7 +29,7 @@ public class Score extends TimerTask implements Sprite   {
 
 
     /**
-     * Drawing the score in the middle up of the screen
+     * Drawing the score in the corner of the screen
      * @param d the surface of the game
      */
     public void drawOn(DrawSurface d) {

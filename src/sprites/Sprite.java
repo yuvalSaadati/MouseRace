@@ -16,7 +16,7 @@ public interface Sprite {
 
 
     /**
-     * notify the sprite that time has passed.
+     * notify for the next step.
      *
      */
     void timePassed();

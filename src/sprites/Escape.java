@@ -14,18 +14,20 @@ public class Escape implements Sprite {
     private int width;
     private int height;
     private Score score;
+    private int velocity;
 
 
     /**
      * constructor .
      *
      */
-    public Escape(int x, int y, int width, int height, Score score) {
+    public Escape(int velocity, int x, int y, int width, int height, Score score) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.score = score;
+        this.velocity = velocity;
     }
 
 
@@ -54,16 +56,15 @@ public class Escape implements Sprite {
         int mouseY = (int) a.getLocation().getY();
         int newX = x;
         int newY = y;
-        int changeVal = 7;
         if (this.x < mouseX) {
-            newX -= changeVal;
+            newX -= this.velocity;
         } else {
-            newX += changeVal;
+            newX += this.velocity;
         }
         if (this.y < mouseY) {
-            newY -= changeVal;
+            newY -= this.velocity;
         } else {
-            newY += changeVal;
+            newY += this.velocity;
         }
         // checking if the mouse is hitting the object
         if (mouseX <= this.width + newX && mouseX >= newX
@@ -71,7 +72,7 @@ public class Escape implements Sprite {
 
             this.hitTarget();
         }
-        // check object colliding in the game framework
+        // checking if the object is out
         if (newX <= 1) {
             newX = 1;
         } else if (newX + this.width > widthScreen) {
@@ -108,10 +109,11 @@ public class Escape implements Sprite {
         int heightScreen = (int) size.getHeight();
         // create random point for the new position of that rectangle
         Random rand = new Random();
-        int upperboundX = widthScreen - (int) this.width;
-        int upperboundY = heightScreen - (int) this.height;
+        int upperboundX = widthScreen - this.width;
+        int upperboundY = heightScreen - this.height;
         this.x = rand.nextInt(upperboundX);
         this.y = rand.nextInt(upperboundY);
+        // increase the score in 5
         this.score.increaseCounter(5);
     }
 }

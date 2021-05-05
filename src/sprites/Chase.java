@@ -13,17 +13,19 @@ public class Chase implements Sprite {
     private int width;
     private int height;
     private GUI gui;
+    private int velocity;
 
     /**
      * constructor .
      *
      */
-    public Chase(int x, int y, int width, int height, GUI gui) {
+    public Chase(int velocity, int x, int y, int width, int height, GUI gui) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.gui = gui;
+        this.velocity = velocity;
     }
     /**
      * Draw chase object on the screen
@@ -53,20 +55,21 @@ public class Chase implements Sprite {
         int newY = this.y;
         // check object colliding in the game framework
         if (this.x < mouseX) {
-            newX += 5;
+            newX += this.velocity;
         } else {
-            newX -= 5;
+            newX -= this.velocity;
         }
         if (this.y < mouseY) {
-            newY += 5;
+            newY += this.velocity;
         } else {
-            newY -= 5;
+            newY -= this.velocity;
         }
         // checking if the mouse is hitting the object
         if (mouseX <= this.width + newX && mouseX >= newX
                 && mouseY <= newY + this.height && mouseY >= newY) {
             hitTarget();
         }
+        // checking if the object is out
         if (newX <= 1) {
             newX = 1;
         } else if (newX + this.width > widthScreen) {
